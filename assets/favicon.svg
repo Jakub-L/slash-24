@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+	<style>@media (prefers-color-scheme: dark) { .a { fill: #001a27 } }</style>
+	<rect class="a" width="800" height="800" fill="#fdf0d5"/>
+	<path d="M500.4,311.9q0,23.7-16.3,52.5L346.3,605.1H499.8v65.7H256.6V624.3L426.4,325.6V233H335.1v93.3H261.7V214.8c0-30.4,15.3-45.5,45.8-45.5H454.6c30.5,0,45.8,15.1,45.8,45.5Z" fill="#d21420"/>
+	<path d="M756.5,576.2H718.4v94.6H646.9V576.2H482.2V531.7L606.8,169.3h76.3v2.9l-117,340.3h80.8v-151h71.5v151h38.1Z" fill="#d21420"/>
+	<line x1="59" y1="751.2" x2="247.2" y2="48.8" fill="none" stroke="#d21420" stroke-miterlimit="10" stroke-width="60"/>
+</svg>

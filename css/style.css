@@ -1,0 +1,15 @@
+:root {
+  --red: #d21420;
+  --blue: #001a27;
+  --beige: #fdf0d5;
+}
+
+* {
+  font-family: monospace;
+  font-size: 16px;
+  margin: 0;
+}
+
+.container {
+  margin: 0 0 2em 2em;
+}
