@@ -1,0 +1,50 @@
+/* FONT IMPORTS */
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&display=swap');
+
+/* GLOBAL VARIABLES */
+:root {
+  --red-light: hsl(356, 90%, 65%);
+  --red-medium: hsl(356, 83%, 45%);
+  --red-dark: hsl(356, 83%, 20%);
+  --blue-light: hsl(200, 100%, 65%);
+  --blue-medium: hsl(200, 100%, 8%);
+  --blue-dark: hsl(200, 100%, 3%);
+  --tan-light: hsl(40, 91%, 91%);
+  --tan-medium: hsl(40, 91%, 65%);
+  --tan-dark: hsl(40, 91%, 20%);
+}
+
+/* GLOBAL PRESETS */
+* {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  line-height: 1.5;
+  color: var(--tan-light);
+}
+
+/* TAG STYLES */
+html {
+  background-color: var(--blue-dark);
+}
+
+body {
+  width: 100%;
+  max-width: 40em;
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: 'Fjalla One';
+  text-align: center;
+}
+
+/* CLASS STYLES */
+.mono {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.text-red {
+  color: var(--red-medium);
+}
