@@ -11,53 +11,83 @@
     <meta name="theme-color" content="#fdf0d5" media="(prefers-color-scheme: light)">
 
 
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/inputs.css">
     <link rel="stylesheet" href="./css/print.css" media="print">
 
     <link rel="icon" href="./favicon.ico" sizes="any">
-    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="./assets/favicon-180.png">
+    <link rel="icon" href="./assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./assets/icons/favicon-180.png">
     <link rel="manifest" href="./manifest.json">
 
     <meta property="og:url" content="https://jakub-l.github.io/slash-24/">
     <meta property="og:title" content="/24 • Subnet Masking Tool">
     <meta property="og:description" content="Tool for calculating and visualising subnet masking">
-    <meta property="og:image" content="assets/social-card.png">
+    <meta property="og:image" content="assets/icons/social-card.png">
     <meta property="og:locale" content="en_GB">
     <meta property="og:type" content="website">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="/24 • Subnet Masking Tool">
     <meta name="twitter:description" content="Tool for calculating and visualising subnet masking">
-    <meta name="twitter:image" content="https://jakub-l.github.io/slash-24/assets/social-card.png">
-    <meta name="twitter:image:src" content="https://jakub-l.github.io/slash-24/assets/social-card.png">
+    <meta name="twitter:image" content="https://jakub-l.github.io/slash-24/assets/icons/social-card.png">
+    <meta name="twitter:image:src" content="https://jakub-l.github.io/slash-24/assets/icons/social-card.png">
     <meta name="twitter:dnt" content="on">
   </head>
 
   <body>
-    <h2>Subnet mask:</h2>
-    <div class="container">
-      <input id="mask" type="range" min="0" max="32"></input>
-      <label for="mask">Subnet mask</label>
-      <div id="binary-mask"></div>
-      <div id="hex-mask"></div>
-      <div id="decimal-mask"></div>
+    <h1>/24 • Subnet Masking Tool</h1>
+    <p>This is an introduction to the tool and page. Mauris eu condimentum urna, nec sollicitudin dolor.
+      Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+      Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis sed
+      metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit. Sed ligula
+      magna, maximus nec nisl sed, efficitur suscipit risus. Vivamus dictum posuere lorem. Aenean est est, aliquam at
+      blandit non, consequat quis risus. Nullam leo dolor, lobortis in orci sit amet, iaculis ullamcorper neque. Sed leo
+      lacus, facilisis sed vulputate a, iaculis non neque. Cras convallis, lacus vel semper molestie, nunc velit
+      volutpat arcu, in interdum risus velit id sapien.
+    </p>
+    <div id="mask-length-container">
+      <label id="mask-length-label">Mask bit-length:</label>
+      <input id="mask-length-input" type="number" min="0" max="32" class="number-input mono" aria-labelledby="mask-length-label">
+      <input id="mask-length-slider" type="range" min="0" max="32" class="range-input" aria-labelledby="mask-length-label">
     </div>
-    <h2>IP address:</h2>
-    <div class="container">
-      <input id="ip"></input>
-      <label for="ip">IP Address</label>
-      <div id="binary-ip"></div>
-      <div id="hex-ip"></div>
-      <div id="decimal-ip"></div>
-    </div>
-    <h2>AND-ed result:</h2>
-    <div class="container">
-      <div id="binary-result"></div>
-      <div id="hex-result"></div>
-      <div id="decimal-result"></div>
-    </div>
+    <!-- <section>
+      <h2>What is subnet masking?</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu condimentum urna, nec sollicitudin dolor.
+        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis
+        sed metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit.
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu condimentum urna, nec sollicitudin dolor.
+        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis
+        sed metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit.
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu condimentum urna, nec sollicitudin dolor.
+        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis
+        sed metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit.
+      </p>
+    </section>
+    <section>
+      <h2>Another section about this.</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu condimentum urna, nec sollicitudin dolor.
+        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis
+        sed metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit.
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu condimentum urna, nec sollicitudin dolor.
+        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis
+        sed metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit.
+      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu condimentum urna, nec sollicitudin dolor.
+        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis
+        sed metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit.
+      </p>
+    </section> -->
   </body>
-  <script src="./main.js"></script>
+  <script src="./js/main.js"></script>
 
 </html>
