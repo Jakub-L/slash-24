@@ -40,6 +40,10 @@ h1 {
   text-align: center;
 }
 
+input {
+  font-size: 1rem;
+}
+
 /* CLASS STYLES */
 .mono {
   font-family: 'IBM Plex Mono', monospace;
@@ -47,4 +51,13 @@ h1 {
 
 .text-red {
   color: var(--red-medium);
+}
+
+.hidden {
+  display: none
+}
+
+.warning {
+  font-size: 0.875rem;
+  color: var(--red-medium)
 }
