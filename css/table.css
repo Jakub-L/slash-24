@@ -1,0 +1,11 @@
+table {
+  width: 100%;
+}
+
+tr td:not(:first-child) {
+  border: 1px solid white;
+}
+
+/* table, th, td {
+  border: 1px solid white;
+} */

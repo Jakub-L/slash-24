@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/inputs.css">
+    <link rel="stylesheet" href="./css/table.css">
     <link rel="stylesheet" href="./css/print.css" media="print">
 
     <link rel="icon" href="./favicon.ico" sizes="any">
@@ -46,16 +47,24 @@
       lacus, facilisis sed vulputate a, iaculis non neque. Cras convallis, lacus vel semper molestie, nunc velit
       volutpat arcu, in interdum risus velit id sapien.
     </p>
-    <div id="mask-length-container" class="input-container">
-      <label id="mask-length-label">Mask bit-length:</label>
-      <input id="mask-length-input" type="number" min="0" max="32" class="text-input mono" aria-labelledby="mask-length-label">
-      <input id="mask-length-slider" type="range" min="0" max="32" class="range-input" aria-labelledby="mask-length-label">
-    </div>
-    <div id="ip-address-container" class="input-container">
-      <label id="ip-address-label" for="ip-address-input">IP address:</label>
-      <input id="ip-address-input" type="text" class="text-input mono">
-      <span id="ip-address-validator" class="warning hidden">Input a valid IP address</span>
-    </div>
+    <section>
+      <div id="mask-length-container" class="input-container">
+        <label id="mask-length-label">Mask bit-length:</label>
+        <input id="mask-length-input" type="number" min="0" max="32" class="text-input mono"
+          aria-labelledby="mask-length-label">
+        <input id="mask-length-slider" type="range" min="0" max="32" class="range-input"
+          aria-labelledby="mask-length-label">
+      </div>
+      <div id="ip-address-container" class="input-container">
+        <label id="ip-address-label" for="ip-address-input">IP address:</label>
+        <input id="ip-address-input" type="text" class="text-input mono">
+        <span id="ip-address-validator" class="text-red hidden">Input a valid IP address</span>
+      </div>
+    </section>
+
+    <section>
+      <table id="ip-address-table" class="mono"></table>
+    </section>
     <!-- <section>
       <h2>What is subnet masking?</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu condimentum urna, nec sollicitudin dolor.

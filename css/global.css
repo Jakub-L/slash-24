@@ -16,17 +16,13 @@
   --tan-dark: hsl(40, 91%, 20%);
 }
 
-/* GLOBAL PRESETS */
-* {
+/* TAG STYLES */
+html {
+  background-color: var(--blue-dark);
   margin: 0;
   font-family: 'Raleway', sans-serif;
   line-height: 1.5;
   color: var(--tan-light);
-}
-
-/* TAG STYLES */
-html {
-  background-color: var(--blue-dark);
 }
 
 body {
@@ -54,10 +50,5 @@ input {
 }
 
 .hidden {
-  display: none
-}
-
-.warning {
-  font-size: 0.875rem;
-  color: var(--red-medium)
+  display: none;
 }
