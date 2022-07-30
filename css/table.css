@@ -2,10 +2,18 @@ table {
   width: 100%;
 }
 
-tr td:not(:first-child) {
-  border: 1px solid white;
+table,
+tr,
+td {
+  padding: 0;
 }
 
-/* table, th, td {
-  border: 1px solid white;
-} */
+tr td:not(:first-child) {
+  border: 1px solid var(--tan-light);
+  width: 6rem;
+  text-align: center;
+}
+
+tr td:first-child {
+  border: 0px solid var(--tan-light);
+}

@@ -6,14 +6,17 @@
   margin: 0.5rem 0;
 }
 
+.input-container label {
+  margin-left: 1px;
+}
+
 /* MASK LENGTH SLIDER */
 #mask-length-container {
   --slider-size: 1rem;
- 
 }
 
 #mask-length-container label {
-  width: 11rem;
+  width: 16rem;
 }
 
 #mask-length-input {

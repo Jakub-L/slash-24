@@ -38,69 +38,45 @@
 
   <body>
     <h1>/24 • Subnet Masking Tool</h1>
-    <p>This is an introduction to the tool and page. Mauris eu condimentum urna, nec sollicitudin dolor.
-      Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-      Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis sed
-      metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit. Sed ligula
-      magna, maximus nec nisl sed, efficitur suscipit risus. Vivamus dictum posuere lorem. Aenean est est, aliquam at
-      blandit non, consequat quis risus. Nullam leo dolor, lobortis in orci sit amet, iaculis ullamcorper neque. Sed leo
-      lacus, facilisis sed vulputate a, iaculis non neque. Cras convallis, lacus vel semper molestie, nunc velit
-      volutpat arcu, in interdum risus velit id sapien.
-    </p>
     <section>
+      <p>This is an introduction to the tool and page. Mauris eu condimentum urna, nec sollicitudin dolor.
+        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis
+        sed metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit. Sed
+        ligula magna, maximus nec nisl sed, efficitur suscipit risus. Vivamus dictum posuere lorem. Aenean est est,
+        aliquam at blandit non, consequat quis risus. Nullam leo dolor, lobortis in orci sit amet, iaculis ullamcorper
+        neque. Sed leo lacus, facilisis sed vulputate a, iaculis non neque. Cras convallis, lacus vel semper molestie,
+        nunc velit volutpat arcu, in interdum risus velit id sapien.
+      </p>
+    </section>
+
+    <section>
+      <h2>Network mask</h2>
+      <p>Describe here what a network mask is. Mauris eu condimentum urna, nec sollicitudin dolor.
+        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        Aenean pellentesque libero eu convallis laoreet.</p>
       <div id="mask-length-container" class="input-container">
-        <label id="mask-length-label">Mask bit-length:</label>
+        <label id="mask-length-label" class="mono">Mask bit-length:</label>
         <input id="mask-length-input" type="number" min="0" max="32" class="text-input mono"
           aria-labelledby="mask-length-label">
         <input id="mask-length-slider" type="range" min="0" max="32" class="range-input"
           aria-labelledby="mask-length-label">
       </div>
-      <div id="ip-address-container" class="input-container">
-        <label id="ip-address-label" for="ip-address-input">IP address:</label>
-        <input id="ip-address-input" type="text" class="text-input mono">
-        <span id="ip-address-validator" class="text-red hidden">Input a valid IP address</span>
-      </div>
+      <table id="mask-table" class="mono"></table>
     </section>
 
     <section>
+      <h2>IP Address</h2>
+      <p>Describe here what an IP address is. Mauris eu condimentum urna, nec sollicitudin dolor.
+        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        Aenean pellentesque libero eu convallis laoreet.</p>
+      <div id="ip-address-container" class="input-container">
+        <label id="ip-address-label" class="mono" for="ip-address-input">IP address:</label>
+        <input id="ip-address-input" type="text" class="text-input mono">
+        <span id="ip-address-validator" class="text-red hidden">Input a valid IP address</span>
+      </div>
       <table id="ip-address-table" class="mono"></table>
     </section>
-    <!-- <section>
-      <h2>What is subnet masking?</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu condimentum urna, nec sollicitudin dolor.
-        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-        Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis
-        sed metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit.
-      </p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu condimentum urna, nec sollicitudin dolor.
-        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-        Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis
-        sed metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit.
-      </p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu condimentum urna, nec sollicitudin dolor.
-        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-        Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis
-        sed metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit.
-      </p>
-    </section>
-    <section>
-      <h2>Another section about this.</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu condimentum urna, nec sollicitudin dolor.
-        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-        Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis
-        sed metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit.
-      </p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu condimentum urna, nec sollicitudin dolor.
-        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-        Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis
-        sed metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit.
-      </p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu condimentum urna, nec sollicitudin dolor.
-        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-        Aenean pellentesque libero eu convallis laoreet. Maecenas augue lectus, dignissim non tristique sed, sagittis
-        sed metus. Pellentesque volutpat dignissim massa, ac ultricies massa ornare id. Fusce aliquet euismod elit.
-      </p>
-    </section> -->
   </body>
   <script src="./js/main.js"></script>
 

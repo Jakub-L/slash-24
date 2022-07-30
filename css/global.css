@@ -31,13 +31,28 @@ body {
   margin: 0 auto;
 }
 
-h1 {
+h1, h2 {
   font-family: 'Fjalla One';
+}
+
+h1 {
   text-align: center;
+}
+
+h2 {
+  margin: 0 
+}
+
+p {
+  margin: 0.25rem 0;
 }
 
 input {
   font-size: 1rem;
+}
+
+section {
+  margin: 2rem 0;
 }
 
 /* CLASS STYLES */
