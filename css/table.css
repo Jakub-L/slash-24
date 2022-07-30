@@ -8,12 +8,12 @@ td {
   padding: 0;
 }
 
-tr td:not(:first-child) {
+.octet-table tr td:not(:first-child) {
   border: 1px solid var(--tan-light);
   width: 6rem;
   text-align: center;
 }
 
-tr td:first-child {
-  border: 0px solid var(--tan-light);
+.bit-table tr td:not(:first-child) {
+  text-align: center;
 }
