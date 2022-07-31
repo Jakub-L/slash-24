@@ -1,5 +1,6 @@
 table {
   width: 100%;
+  border-spacing: 0 2px;
 }
 
 table,
@@ -15,5 +16,16 @@ td {
 }
 
 .bit-table tr td:not(:first-child) {
+  border-top: 1px solid var(--tan-light);
+  border-bottom: 1px solid var(--tan-light);
+  width: 0.85rem;
   text-align: center;
+}
+
+.bit-table tr td:nth-child(8n + 1) {
+  border-right: 1px solid var(--tan-light);
+}
+
+.bit-table tr td:nth-child(8n + 2):not(:nth-child(2)) {
+  border-left: 1px solid var(--tan-light);
 }

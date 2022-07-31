@@ -14,6 +14,7 @@
   --tan-light: hsl(40, 91%, 91%);
   --tan-medium: hsl(40, 91%, 65%);
   --tan-dark: hsl(40, 91%, 20%);
+  --grey: hsl(40, 5%, 40%);
 }
 
 /* TAG STYLES */
@@ -40,7 +41,7 @@ h1 {
 }
 
 h2 {
-  margin: 0 
+  margin: 0;
 }
 
 p {
@@ -62,6 +63,10 @@ section {
 
 .text-red {
   color: var(--red-medium);
+}
+
+.text-grey {
+  color: var(--grey);
 }
 
 .hidden {

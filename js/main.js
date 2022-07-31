@@ -1,6 +1,6 @@
 // GLOBALS
 const INITIAL_BITMASK_LENGTH = 24;
-const INITIAL_IP_ADDRESS = '172.16.254.1';
+const INITIAL_IP_ADDRESS = '172.16.254.149';
 
 // ELEMENTS
 const maskLengthInput = document.getElementById('mask-length-input');
@@ -16,11 +16,12 @@ const hostPartTable = document.getElementById('host-part-table');
 maskLengthInput.value = INITIAL_BITMASK_LENGTH;
 maskLengthSlider.value = INITIAL_BITMASK_LENGTH;
 ipAddressInput.value = INITIAL_IP_ADDRESS;
+let maskBitLength = INITIAL_BITMASK_LENGTH;
 let ipOctets;
 let ipBinOctets;
 let maskBinOctets;
 let maskComplementBinOctets;
-setMaskOctets(INITIAL_BITMASK_LENGTH);
+setMask(INITIAL_BITMASK_LENGTH);
 setIpOctets(parseIp(INITIAL_IP_ADDRESS));
 generateMaskTable();
 generateIpTable();
@@ -37,7 +38,7 @@ function bitmaskLengthChange({ target }) {
   const clampedValue = Math.max(0, Math.min(32, target.value));
   maskLengthInput.value = clampedValue;
   maskLengthSlider.value = clampedValue;
-  setMaskOctets(clampedValue);
+  setMask(clampedValue);
   generateMaskTable();
   generateNetworkPrefixTable();
   generateHostPartTable();
@@ -79,34 +80,43 @@ function generateMaskTable() {
 
 function generateNetworkPrefixTable() {
   networkPrefixTable.innerHTML = '';
-  const ipArray = intersperse(ipBinOctets, '.').join('').split('');
-  const maskArray = intersperse(maskBinOctets, '.').join('').split('');
+  const ipArray = ipBinOctets.join('').split('');
+  const maskArray = maskBinOctets.join('').split('');
   const prefixBinaryArray = ipArray.map((bit, i) => bit === '.' ? '.' : Number(bit) & Number(maskArray[i]));
   generateRow(networkPrefixTable, 'IP Address', ipArray);
   generateRow(networkPrefixTable, 'Mask', maskArray);
   generateRow(networkPrefixTable, 'Network prefix', prefixBinaryArray);
+
+  for (let i = 0; i < networkPrefixTable.rows.length; i++) {
+    const row = networkPrefixTable.rows[i];
+    for (let j = 1; j < row.cells.length; j++) {
+      if (j <= maskBitLength) row.cells[j].classList.add('text-red');
+      else row.cells[j].classList.add('text-grey');
+    }
+  }
 }
 
 function generateHostPartTable() {
   hostPartTable.innerHTML = '';
-  const ipArray = intersperse(ipBinOctets, '.').join('').split('');
-  const maskComplement = intersperse(maskComplementBinOctets, '.').join('').split('');
+  const ipArray = ipBinOctets.join('').split('');
+  const maskComplement = maskComplementBinOctets.join('').split('');
   const hostPartBinArray = ipArray.map((bit, i) => bit === '.' ? '.' : Number(bit) & Number(maskComplement[i]));
   generateRow(hostPartTable, 'IP Address', ipArray);
   generateRow(hostPartTable, 'Mask complement', maskComplement);
   generateRow(hostPartTable, 'Host part', hostPartBinArray);
+
+  for (let i = 0; i < hostPartTable.rows.length; i++) {
+    const row = hostPartTable.rows[i];
+    for (let j = 1; j < row.cells.length; j++) {
+      if (j > maskBitLength) row.cells[j].classList.add('text-red');
+      else row.cells[j].classList.add('text-grey');
+    }
+  }
 }
 
 // GENERAL UTILS
 function parseIp(str) {
   return str.split('.').map(Number);
-}
-
-function intersperse(arr, delimiter) {
-  return arr
-    .map(val => [delimiter, val])
-    .flat()
-    .slice(1);
 }
 
 // SETTERS
@@ -115,7 +125,8 @@ function setIpOctets(octets) {
   ipBinOctets = octets.map(o => o.toString(2).padStart(8, 0));
 }
 
-function setMaskOctets(maskLength) {
+function setMask(maskLength) {
+  maskBitLength = maskLength;
   maskBinOctets = '1'.repeat(maskLength).padEnd(32, 0).match(/.{8}/g);
   maskComplementBinOctets = '0'.repeat(maskLength).padEnd(32, 1).match(/.{8}/g);
 }
