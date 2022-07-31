@@ -45,8 +45,7 @@ function bitmaskLengthChange({ target }) {
 
 function ipAddressChange({ target }) {
   const newOctets = parseIp(target.value);
-  const isIpValid =
-    newOctets.length === 4 && newOctets.every(octet => octet >= 0 && octet <= 255);
+  const isIpValid = newOctets.length === 4 && newOctets.every(octet => octet >= 0 && octet <= 255);
   if (isIpValid) {
     setIpOctets(newOctets);
     ipAddressValidator.classList.add('hidden');
@@ -82,9 +81,7 @@ function generateNetworkPrefixTable() {
   networkPrefixTable.innerHTML = '';
   const ipArray = intersperse(ipBinOctets, '.').join('').split('');
   const maskArray = intersperse(maskBinOctets, '.').join('').split('');
-  const prefixBinaryArray = ipArray.map((bit, i) =>
-    bit === '.' ? '.' : Number(bit) & Number(maskArray[i])
-  );
+  const prefixBinaryArray = ipArray.map((bit, i) => bit === '.' ? '.' : Number(bit) & Number(maskArray[i]));
   generateRow(networkPrefixTable, 'IP Address', ipArray);
   generateRow(networkPrefixTable, 'Mask', maskArray);
   generateRow(networkPrefixTable, 'Network prefix', prefixBinaryArray);
@@ -94,9 +91,7 @@ function generateHostPartTable() {
   hostPartTable.innerHTML = '';
   const ipArray = intersperse(ipBinOctets, '.').join('').split('');
   const maskComplement = intersperse(maskComplementBinOctets, '.').join('').split('');
-  const hostPartBinArray = ipArray.map((bit, i) =>
-    bit === '.' ? '.' : Number(bit) & Number(maskComplement[i])
-  );
+  const hostPartBinArray = ipArray.map((bit, i) => bit === '.' ? '.' : Number(bit) & Number(maskComplement[i]));
   generateRow(hostPartTable, 'IP Address', ipArray);
   generateRow(hostPartTable, 'Mask complement', maskComplement);
   generateRow(hostPartTable, 'Host part', hostPartBinArray);
@@ -123,8 +118,4 @@ function setIpOctets(octets) {
 function setMaskOctets(maskLength) {
   maskBinOctets = '1'.repeat(maskLength).padEnd(32, 0).match(/.{8}/g);
   maskComplementBinOctets = '0'.repeat(maskLength).padEnd(32, 1).match(/.{8}/g);
-}
-
-function findHost() {
-  return;
 }
