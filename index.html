@@ -51,6 +51,19 @@
     </section>
 
     <section>
+      <h2>IP Address</h2>
+      <p>Describe here what an IP address is. Mauris eu condimentum urna, nec sollicitudin dolor.
+        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        Aenean pellentesque libero eu convallis laoreet.</p>
+      <div id="ip-address-container" class="input-container">
+        <label id="ip-address-label" class="mono" for="ip-address-input">IP address:</label>
+        <input id="ip-address-input" type="text" class="text-input mono">
+        <span id="ip-address-validator" class="text-red hidden">Input a valid IP address</span>
+      </div>
+      <table id="ip-address-table" class="octet-table mono" cellspacing="0"></table>
+    </section>
+
+    <section>
       <h2>Network mask</h2>
       <p>Describe here what a network mask is. Mauris eu condimentum urna, nec sollicitudin dolor.
         Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
@@ -62,20 +75,7 @@
         <input id="mask-length-slider" type="range" min="0" max="32" class="range-input"
           aria-labelledby="mask-length-label">
       </div>
-      <table id="mask-table" class="octet-table mono"></table>
-    </section>
-
-    <section>
-      <h2>IP Address</h2>
-      <p>Describe here what an IP address is. Mauris eu condimentum urna, nec sollicitudin dolor.
-        Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-        Aenean pellentesque libero eu convallis laoreet.</p>
-      <div id="ip-address-container" class="input-container">
-        <label id="ip-address-label" class="mono" for="ip-address-input">IP address:</label>
-        <input id="ip-address-input" type="text" class="text-input mono">
-        <span id="ip-address-validator" class="text-red hidden">Input a valid IP address</span>
-      </div>
-      <table id="ip-address-table" class="octet-table mono"></table>
+      <table id="mask-table" class="octet-table mono" cellspacing="0"></table>
     </section>
 
     <section>
@@ -83,7 +83,7 @@
       <p>Describe here what a network prefix is, and how AND works. Mauris eu condimentum urna, nec sollicitudin dolor.
         Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
         Aenean pellentesque libero eu convallis laoreet.</p>
-      <table id="network-prefix-table" class="bit-table mono"></table>
+      <table id="network-prefix-table" class="bit-table mono" cellspacing="0"></table>
     </section>
 
     <section>
@@ -91,7 +91,7 @@
       <p>Describe here what a host part is, and how AND works. Mauris eu condimentum urna, nec sollicitudin dolor.
         Donec et augue felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
         Aenean pellentesque libero eu convallis laoreet.</p>
-      <table id="host-part-table" class="bit-table mono"></table>
+      <table id="host-part-table" class="bit-table mono" cellspacing="0"></table>
     </section>
   </body>
   <script src="./js/main.js"></script>
