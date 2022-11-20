@@ -19,56 +19,65 @@
 
 /* TAG STYLES */
 html {
-  background-color: var(--blue-dark);
+  /* Positioning */
+
+  /* Display and Box Model */
   margin: 0;
+  padding: 1rem;
+
+  /* Colour */
+  background-color: var(--blue-dark);
+  color: var(--tan-light);
+
+  /* Text */
   font-family: 'Raleway', sans-serif;
   line-height: 1.5;
-  color: var(--tan-light);
+
+  /* Other */
 }
 
 body {
-  width: 100%;
-  max-width: 40em;
-  margin: 0 auto;
-}
-
-h1, h2 {
-  font-family: 'Fjalla One';
+  /* Display and Box Model */
+  margin: auto;
+  max-width: 768px;
 }
 
 h1 {
+  /* Display and Box Model */
+  margin: 0.75rem 0;
+
+  /* Text */
   text-align: center;
+  font-family: 'Fjalla One';
 }
 
 h2 {
-  margin: 0;
+  /* Display and Box Model */
+  margin: 1rem 0 0 0;
+
+  /* Text */
+  font-family: 'Fjalla One';
 }
 
 p {
-  margin: 0.25rem 0;
+  /* Display and Box Model */
+  margin: 0;
 }
 
-input {
-  font-size: 1rem;
-}
-
-section {
-  margin: 2rem 0;
+p + p {
+  /* Display and Box Model */
+  margin-top: 1rem;
 }
 
 /* CLASS STYLES */
+.hidden {
+  display: none;
+}
+
 .mono {
   font-family: 'IBM Plex Mono', monospace;
 }
 
 .text-red {
   color: var(--red-medium);
-}
-
-.text-grey {
-  color: var(--grey);
-}
-
-.hidden {
-  display: none;
 }
