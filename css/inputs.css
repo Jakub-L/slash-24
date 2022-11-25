@@ -1,5 +1,5 @@
 /* CONTAINERS */
-div[id$='input__container'] {
+div[id$='__container'] {
   /* Display and Box Model */
   margin: 0.5rem 0;
   display: grid;
@@ -9,21 +9,24 @@ div[id$='input__container'] {
 }
 
 /* IP ADDRESS INPUT */
-#ip-address-input__container {
+#ip__container {
   grid-template-areas: 'label input' 'validator validator';
 }
 
-#ip-address-input__label {
+#ip__label {
   /* Display and Box Model */
   grid-area: label;
 }
 
-#ip-address-input__validator {
+#ip__validator {
   /* Display and Box Model */
   grid-area: validator;
+
+  /* Text */
+  text-align: center;
 }
 
-#ip-address-input__input {
+#ip__input {
   /* Display and Box Model */
   grid-area: input;
   width: calc(100% - 0.5rem);
@@ -33,22 +36,22 @@ div[id$='input__container'] {
 }
 
 /* MASK LENGTH INPUT */
-#mask-length-input__container {
+#mask__container {
   /* Display and Box Model */
   grid-template-areas: 'label input';
 }
 
-#mask-length-input__label {
+#mask__label {
   /* Display and Box Model */
   grid-area: label;
 }
 
-#mask-length-input__slider {
+#mask__slider {
   /* Display and Box Model */
   display: none;
 }
 
-#mask-length-input__input {
+#mask__input {
   /* Display and Box Model */
   grid-area: input;
 }
@@ -108,16 +111,16 @@ label {
 
 /* MEDIA QUERIES */
 @media only screen and (min-width: 768px) {
-  #mask-length-input__container {
+  #mask__container {
     /* Display and Box Model */
     grid-template-areas: 'label input slider';
     grid-template-columns: auto 10em 2fr;
   }
 
-  #mask-length-input__slider {
+  #mask__slider {
     /* Display and Box Model */
     grid-area: slider;
     display: initial;
-    width: calc(100% - 0.5rem)
+    width: calc(100% - 0.5rem);
   }
 }

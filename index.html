@@ -52,10 +52,10 @@
         to locate a device and direct traffic to it. IPv4 (IP version 4) uses a 32-bit number to represent the address.
         For human readibility it usually is split into four 8-bit integers called <i>octets</i>. As you will see, when
         it comes to subnet masking, it can be helpful to think of an IP address in binary terms.</p>
-      <div id="ip-address-input__container">
-        <label id="ip-address-input__label" for="ip-address-input__input">IP address:</label>
-        <input id="ip-address-input__input" type="text">
-        <span id="ip-address-input__validator" class="text-red hidden">Input a valid IP address</span>
+      <div id="ip__container">
+        <label id="ip__label" for="ip__input">IP address:</label>
+        <input id="ip__input" type="text">
+        <span id="ip__validator" class="text-red hidden">Input a valid IP address</span>
       </div>
     </section>
 
@@ -68,11 +68,11 @@
         however many 0s it takes to make the total length 32. We usually write the mask as number between 0 and 32
         (indicating how many 1s the mask begins with) and separated from the IP address by a slash. For example, the
         name of this site - /24 - indicates a mask of 24 ones and 8 zeroes. </p>
-      <p>Since subnet masks are 32 bits long, they can be represented using octets, just like and IP address</p>
-      <div id="mask-length-input__container">
-        <label id="mask-length-input__label">Mask bit-length:</label>
-        <input id="mask-length-input__input" type="number" min="0" max="32" aria-labelledby="mask-length-input__label">
-        <input id="mask-length-input__slider" type="range" min="0" max="32" aria-labelledby="mask-length-input__label">
+      <p>Since subnet masks are 32 bits long, they can be represented using octets, just like and IP address.</p>
+      <div id="mask__container">
+        <label id="mask__label">Mask bit-length:</label>
+        <input id="mask__input" type="number" min="0" max="32" aria-labelledby="mask__label">
+        <input id="mask__slider" type="range" min="0" max="32" aria-labelledby="mask__label">
       </div>
     </section>
   </body>
