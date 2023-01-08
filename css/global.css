@@ -31,7 +31,8 @@ html {
 
   /* Text */
   font-family: 'Raleway', sans-serif;
-  line-height: 1.5;
+  font-size: 1.05rem;
+  line-height: 1.6;
 
   /* Other */
 }
@@ -64,9 +65,28 @@ p {
   margin: 0;
 }
 
-p + p {
+p+p {
   /* Display and Box Model */
   margin-top: 1rem;
+}
+
+footer {
+  /* Display and Box Model */
+  width: 100%;
+  margin-top: 1.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-top: 1px solid var(--red-medium);
+
+  /* Text */
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+a,
+a:visited {
+  /* Colour */
+  color: var(--red-medium)
 }
 
 /* CLASS STYLES */
