@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
   <head>
     <meta charset="UTF-8">
@@ -42,7 +42,8 @@
     <section>
       <p>We created this web tool to explain subnetting and network masks in a way accessible to novices and learners.
         Apart from explaining each of the elements that goes into a calculating a subnet, the whole process is
-        interactive. <span class="text-red">Certain</span> fields can be edited to affect the results at the
+        interactive. Fields with <span class="emphasis">emphasised</span> text can be edited to affect the results at
+        the
         bottom of the page.</p>
     </section>
 
@@ -52,10 +53,22 @@
         to locate a device and direct traffic to it. IPv4 (IP version 4) uses a 32-bit number to represent the address.
         For human readibility it usually is split into four 8-bit integers called <i>octets</i>. As you will see, when
         it comes to subnet masking, it can be helpful to think of an IP address in binary terms.</p>
-      <div id="ip__container">
-        <label id="ip__label" for="ip__input">IP address:</label>
-        <input id="ip__input" type="text">
-        <span id="ip__validator" class="text-red hidden">Input a valid IP address</span>
+      <div id="ip_input__container">
+        <label id="ip_input__label" for="ip_input__field">IP address:</label>
+        <input id="ip_input__field" type="text">
+        <span id="ip_input__validator" class="emphasis hidden">Please input a valid IP address</span>
+      </div>
+      <div class="conversion-container">
+        <span>IP octets in decimal:</span>
+        <span class="octet" data-conversion="ip-decimal"></span>
+        <span class="octet" data-conversion="ip-decimal"></span>
+        <span class="octet" data-conversion="ip-decimal"></span>
+        <span class="octet" data-conversion="ip-decimal"></span>
+        <span>IP octets in binary:</span>
+        <span class="octet" data-conversion="ip-binary"></span>
+        <span class="octet" data-conversion="ip-binary"></span>
+        <span class="octet" data-conversion="ip-binary"></span>
+        <span class="octet" data-conversion="ip-binary"></span>
       </div>
     </section>
 
@@ -69,10 +82,22 @@
         (indicating how many 1s the mask begins with) and separated from the IP address by a slash. For example, the
         name of this site - /24 - indicates a mask of 24 ones and 8 zeroes. </p>
       <p>Since subnet masks are 32 bits long, they can be represented using octets, just like and IP address.</p>
-      <div id="mask__container">
-        <label id="mask__label">Mask bit-length:</label>
-        <input id="mask__input" type="number" min="0" max="32" aria-labelledby="mask__label">
-        <input id="mask__slider" type="range" min="0" max="32" aria-labelledby="mask__label">
+      <div id="mask_input__container">
+        <label id="mask_input__label">Mask bit-length:</label>
+        <input id="mask_input__field" type="number" min="0" max="32" aria-labelledby="mask_input__label">
+        <input id="mask_input__slider" type="range" min="0" max="32" aria-labelledby="mask_input__label">
+      </div>
+      <div class="conversion-container">
+        <span>Mask octets in decimal:</span>
+        <span class="octet" data-conversion="mask-decimal"></span>
+        <span class="octet" data-conversion="mask-decimal"></span>
+        <span class="octet" data-conversion="mask-decimal"></span>
+        <span class="octet" data-conversion="mask-decimal"></span>
+        <span>Mask octets in binary:</span>
+        <span class="octet" data-conversion="mask-binary"></span>
+        <span class="octet" data-conversion="mask-binary"></span>
+        <span class="octet" data-conversion="mask-binary"></span>
+        <span class="octet" data-conversion="mask-binary"></span>
       </div>
     </section>
 

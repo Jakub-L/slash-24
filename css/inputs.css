@@ -1,5 +1,5 @@
-/* CONTAINERS */
-div[id$='__container'] {
+/* INPUT CONTAINERS */
+div[id$='_input__container'] {
   /* Display and Box Model */
   margin: 0.5rem 0;
   display: grid;
@@ -9,16 +9,16 @@ div[id$='__container'] {
 }
 
 /* IP ADDRESS INPUT */
-#ip__container {
+#ip_input__container {
   grid-template-areas: 'label input' 'validator validator';
 }
 
-#ip__label {
+#ip_input__label {
   /* Display and Box Model */
   grid-area: label;
 }
 
-#ip__validator {
+#ip_input__validator {
   /* Display and Box Model */
   grid-area: validator;
 
@@ -26,28 +26,28 @@ div[id$='__container'] {
   text-align: center;
 }
 
-#ip__input {
+#ip_input__field {
   /* Display and Box Model */
   grid-area: input;
 }
 
 /* MASK LENGTH INPUT */
-#mask__container {
+#mask_input__container {
   /* Display and Box Model */
   grid-template-areas: 'label input';
 }
 
-#mask__label {
+#mask_input__label {
   /* Display and Box Model */
   grid-area: label;
 }
 
-#mask__slider {
+#mask_input__slider {
   /* Display and Box Model */
   display: none;
 }
 
-#mask__input {
+#mask_input__field {
   /* Display and Box Model */
   grid-area: input;
 }
@@ -62,12 +62,12 @@ input:not([type='range']) {
 
   /* Text */
   font-family: 'IBM Plex Mono', monospace;
-  color: var(--red-medium);
+  color: var(--emphasis);
   text-align: center;
   font-size: 1rem;
 
   /* Other */
-  border: 1px var(--red-medium) solid;
+  border: 1px var(--emphasis) solid;
   border-radius: 0.25rem;
 }
 
@@ -78,7 +78,7 @@ input[type='range'] {
   height: 0.5rem;
   background: transparent;
   border-radius: 0.5rem;
-  border: 1px var(--red-medium) solid;
+  border: 1px var(--emphasis) solid;
 }
 
 input[type='range']::-webkit-slider-thumb {
@@ -86,19 +86,19 @@ input[type='range']::-webkit-slider-thumb {
   appearance: none;
   width: 1rem;
   height: 1rem;
-  background: var(--red-medium);
+  background: var(--emphasis);
   border-radius: 0.5rem;
   cursor: pointer;
-  border: 1px var(--red-medium) solid;
+  border: 1px var(--emphasis) solid;
 }
 
 input[type='range']::-moz-range-thumb {
   width: 1rem;
   height: 1rem;
-  background: var(--red-medium);
+  background: var(--emphasis);
   border-radius: 0.5rem;
   cursor: pointer;
-  border: 1px var(--red-medium) solid;
+  border: 1px var(--emphasis) solid;
 }
 
 label {
@@ -107,13 +107,13 @@ label {
 
 /* MEDIA QUERIES */
 @media only screen and (min-width: 768px) {
-  #mask__container {
+  #mask_input__container {
     /* Display and Box Model */
     grid-template-areas: 'label input slider';
     grid-template-columns: auto 10em 2fr;
   }
 
-  #mask__slider {
+  #mask_input__slider {
     /* Display and Box Model */
     grid-area: slider;
     display: initial;
