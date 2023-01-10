@@ -90,6 +90,23 @@ a:visited {
   color: var(--emphasis)
 }
 
+table {
+  margin: 0 auto 1rem auto;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 0 0.75rem;
+  color: var(--emphasis);
+  border-bottom: 1px solid var(--emphasis);
+}
+
+td {
+  font-size: 0.9rem;
+}
+
 /* CLASS STYLES */
 .dark {
   --emphasis: hsl(356, 83%, 45%);
@@ -109,7 +126,10 @@ a:visited {
   color: var(--emphasis);
 }
 
-.octet {
+.bits {
+  /* Display and Box Model */
+  padding: 0.25rem 0.5rem;
+
   /* Text */
   text-align: center;
 
@@ -118,27 +138,44 @@ a:visited {
   border-radius: 0.25rem;
 }
 
-.conversion-container {
+.octet-container {
   /* Display and Box Model */
   margin: 0.5rem 0;
   display: grid;
   gap: 0.5rem;
   grid-auto-flow: column;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto auto auto;
+  align-items: center;
 
   /* Text */
   font-family: 'IBM Plex Mono', monospace;
   text-align: center;
 }
 
+.octets-2 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(5, auto);
+}
+
+.octets-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(5, auto);
+}
+
 /* MEDIA QUERIES */
 @media only screen and (min-width: 768px) {
-  .conversion-container {
+  .octet-container {
     /* Display and Box Model */
     grid-auto-flow: row;
-    grid-template-columns: auto 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
     text-align: left;
+  }
+
+  .octets-2 {
+    grid-template-columns: auto repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .octets-3 {
+    grid-template-columns: auto repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr 1fr;
   }
 }

@@ -48,7 +48,7 @@
     </section>
 
     <section>
-      <h2>IP Address</h2>
+      <h2>IP address</h2>
       <p>An IP (Internet Protocol) address is similar to a real-world address. It allows other computers on a network
         to locate a device and direct traffic to it. IPv4 (IP version 4) uses a 32-bit number to represent the address.
         For human readibility it usually is split into four 8-bit integers called <i>octets</i>. As you will see, when
@@ -58,17 +58,17 @@
         <input id="ip_input__field" type="text">
         <span id="ip_input__validator" class="emphasis hidden">Please input a valid IP address</span>
       </div>
-      <div class="conversion-container">
+      <div class="octet-container octets-2">
         <span>IP octets in decimal:</span>
-        <span class="octet" data-conversion="ip-decimal"></span>
-        <span class="octet" data-conversion="ip-decimal"></span>
-        <span class="octet" data-conversion="ip-decimal"></span>
-        <span class="octet" data-conversion="ip-decimal"></span>
+        <span class="bits" data-group="ip-decimal"></span>
+        <span class="bits" data-group="ip-decimal"></span>
+        <span class="bits" data-group="ip-decimal"></span>
+        <span class="bits" data-group="ip-decimal"></span>
         <span>IP octets in binary:</span>
-        <span class="octet" data-conversion="ip-binary"></span>
-        <span class="octet" data-conversion="ip-binary"></span>
-        <span class="octet" data-conversion="ip-binary"></span>
-        <span class="octet" data-conversion="ip-binary"></span>
+        <span class="bits" data-group="ip-binary"></span>
+        <span class="bits" data-group="ip-binary"></span>
+        <span class="bits" data-group="ip-binary"></span>
+        <span class="bits" data-group="ip-binary"></span>
       </div>
     </section>
 
@@ -87,17 +87,89 @@
         <input id="mask_input__field" type="number" min="0" max="32" aria-labelledby="mask_input__label">
         <input id="mask_input__slider" type="range" min="0" max="32" aria-labelledby="mask_input__label">
       </div>
-      <div class="conversion-container">
+      <div class="octet-container octets-2">
         <span>Mask octets in decimal:</span>
-        <span class="octet" data-conversion="mask-decimal"></span>
-        <span class="octet" data-conversion="mask-decimal"></span>
-        <span class="octet" data-conversion="mask-decimal"></span>
-        <span class="octet" data-conversion="mask-decimal"></span>
+        <span class="bits" data-group="mask-decimal"></span>
+        <span class="bits" data-group="mask-decimal"></span>
+        <span class="bits" data-group="mask-decimal"></span>
+        <span class="bits" data-group="mask-decimal"></span>
         <span>Mask octets in binary:</span>
-        <span class="octet" data-conversion="mask-binary"></span>
-        <span class="octet" data-conversion="mask-binary"></span>
-        <span class="octet" data-conversion="mask-binary"></span>
-        <span class="octet" data-conversion="mask-binary"></span>
+        <span class="bits" data-group="mask-binary"></span>
+        <span class="bits" data-group="mask-binary"></span>
+        <span class="bits" data-group="mask-binary"></span>
+        <span class="bits" data-group="mask-binary"></span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Network prefix</h2>
+      <p>
+        The network prefix (also called the <i>routing prefix</i> or the <i>network number</i>) allows the
+        identification of the specific subnet, allowing the correct routing of internet traffic. To find the network
+        prefix, a bitwise AND operation is applied to the subnet mask and the IP address.
+      </p>
+      <p>An AND operation (usually represented by the <span class="mono">&</span> character) takes two bits and returns
+        a <span class="mono">1</span> if both inputs are <span class="mono">1</span>:</p>
+      <table>
+        <tr>
+          <th>A</th>
+          <th>B</th>
+          <th>A & B</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </table>
+      <p> Otherwise it returns a <span class="mono">0</span>. <i>Bitwise</i> simply indicates
+        that this operation is performed bit-by-bit on both inputs. By using the IP address and mask above we get the
+        following:</p>
+      <div class="octet-container octets-3">
+        <span>IP bits:</span>
+        <span class="bits" data-group="network-prefix-ip"></span>
+        <span class="bits" data-group="network-prefix-ip"></span>
+        <span class="bits" data-group="network-prefix-ip"></span>
+        <span class="bits" data-group="network-prefix-ip"></span>
+        <span>Mask bits:</span>
+        <span class="bits" data-group="network-prefix-mask"></span>
+        <span class="bits" data-group="network-prefix-mask"></span>
+        <span class="bits" data-group="network-prefix-mask"></span>
+        <span class="bits" data-group="network-prefix-mask"></span>
+        <span>Network prefix bits (IP & Mask):</span>
+        <span class="bits" data-group="network-prefix-result"></span>
+        <span class="bits" data-group="network-prefix-result"></span>
+        <span class="bits" data-group="network-prefix-result"></span>
+        <span class="bits" data-group="network-prefix-result"></span>
+      </div>
+      <p>Similarly to how a decimal IP address can be displayed in binary, we can convert the network prefix from binary
+        back to decimal:</p>
+      <div class="octet-container octets-2">
+        <span>Network prefix in decimal:</span>
+        <span class="bits" data-group="network-prefix-decimal"></span>
+        <span class="bits" data-group="network-prefix-decimal"></span>
+        <span class="bits" data-group="network-prefix-decimal"></span>
+        <span class="bits" data-group="network-prefix-decimal"></span>
+        <span>Network prefix in binary:</span>
+        <span class="bits" data-group="network-prefix-binary"></span>
+        <span class="bits" data-group="network-prefix-binary"></span>
+        <span class="bits" data-group="network-prefix-binary"></span>
+        <span class="bits" data-group="network-prefix-binary"></span>
       </div>
     </section>
 
