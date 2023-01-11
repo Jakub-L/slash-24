@@ -13,7 +13,6 @@
 
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/inputs.css">
-    <!-- <link rel="stylesheet" href="./css/print.css" media="print"> -->
 
     <link rel="icon" href="./favicon.ico" sizes="any">
     <link rel="icon" href="./assets/icons/favicon.svg" type="image/svg+xml">
@@ -109,7 +108,8 @@
         prefix, a bitwise AND operation is applied to the subnet mask and the IP address.
       </p>
       <p>An AND operation (usually represented by the <span class="mono">&</span> character) takes two bits and returns
-        a <span class="mono">1</span> if both inputs are <span class="mono">1</span>:</p>
+        a <span class="mono">1</span> if both inputs are <span class="mono">1</span>; otherwise it returns a <span
+          class="mono">0</span>.</p>
       <table>
         <tr>
           <th>A</th>
@@ -137,7 +137,7 @@
           <td>0</td>
         </tr>
       </table>
-      <p> Otherwise it returns a <span class="mono">0</span>. <i>Bitwise</i> simply indicates
+      <p><i>Bitwise</i> simply indicates
         that this operation is performed bit-by-bit on both inputs. By using the IP address and mask above we get the
         following:</p>
       <div class="octet-container octets-3">
@@ -151,7 +151,7 @@
         <span class="bits" data-group="network-prefix-mask"></span>
         <span class="bits" data-group="network-prefix-mask"></span>
         <span class="bits" data-group="network-prefix-mask"></span>
-        <span>Network prefix bits (IP & Mask):</span>
+        <span>Network prefix bits:</span>
         <span class="bits" data-group="network-prefix-result"></span>
         <span class="bits" data-group="network-prefix-result"></span>
         <span class="bits" data-group="network-prefix-result"></span>
@@ -170,6 +170,60 @@
         <span class="bits" data-group="network-prefix-binary"></span>
         <span class="bits" data-group="network-prefix-binary"></span>
         <span class="bits" data-group="network-prefix-binary"></span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Host identifier</h2>
+      <p>The host identifier, sometimes also called a <i>rest field</i> identifies the specific device within the
+        network. Similarly to the network prefix, it is obtained by performing a bitwise AND operation using the IP
+        address. However, instead of using the network mask, it uses the <i>complement</i> of the mask. A complement
+        simply inverts the bits - where the original bit is <span class="mono">1</span>, the complement will have a
+        <span class="mono">0</span>, and vice versa.
+      </p>
+      <div class="octet-container octets-2">
+        <span>Mask bits:</span>
+        <span class="bits" data-group="complement-example-mask"></span>
+        <span class="bits" data-group="complement-example-mask"></span>
+        <span class="bits" data-group="complement-example-mask"></span>
+        <span class="bits" data-group="complement-example-mask"></span>
+        <span>Mask complement bits:</span>
+        <span class="bits" data-group="complement-example-complement"></span>
+        <span class="bits" data-group="complement-example-complement"></span>
+        <span class="bits" data-group="complement-example-complement"></span>
+        <span class="bits" data-group="complement-example-complement"></span>
+      </div>
+      <p>The actual operation is exactly the same as for the network prefix:</p>
+      <div class="octet-container octets-3">
+        <span>IP bits:</span>
+        <span class="bits" data-group="host-identifier-ip"></span>
+        <span class="bits" data-group="host-identifier-ip"></span>
+        <span class="bits" data-group="host-identifier-ip"></span>
+        <span class="bits" data-group="host-identifier-ip"></span>
+        <span>Complement bits:</span>
+        <span class="bits" data-group="host-identifier-complement"></span>
+        <span class="bits" data-group="host-identifier-complement"></span>
+        <span class="bits" data-group="host-identifier-complement"></span>
+        <span class="bits" data-group="host-identifier-complement"></span>
+        <span>Host identifier bits:</span>
+        <span class="bits" data-group="host-identifier-result"></span>
+        <span class="bits" data-group="host-identifier-result"></span>
+        <span class="bits" data-group="host-identifier-result"></span>
+        <span class="bits" data-group="host-identifier-result"></span>
+      </div>
+      <p>Again, like the IP address, network mask or network prefix, the host identifier can be written in a binary or
+        decimal form:</p>
+      <div class="octet-container octets-2">
+        <span>Host identifier in decimal:</span>
+        <span class="bits" data-group="host-identifier-decimal"></span>
+        <span class="bits" data-group="host-identifier-decimal"></span>
+        <span class="bits" data-group="host-identifier-decimal"></span>
+        <span class="bits" data-group="host-identifier-decimal"></span>
+        <span>Host identifier in binary:</span>
+        <span class="bits" data-group="host-identifier-binary"></span>
+        <span class="bits" data-group="host-identifier-binary"></span>
+        <span class="bits" data-group="host-identifier-binary"></span>
+        <span class="bits" data-group="host-identifier-binary"></span>
       </div>
     </section>
 

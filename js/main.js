@@ -15,21 +15,35 @@ const maskBinaryOctets = document.querySelectorAll('[data-group=mask-binary]');
 
 const networkPrefixIpOctets = document.querySelectorAll('[data-group=network-prefix-ip]');
 const networkPrefixMaskOctets = document.querySelectorAll('[data-group=network-prefix-mask]');
-const networkPrefixResultOctets = document.querySelectorAll(
-  '[data-group=network-prefix-result]'
-);
+// prettier-ignore
+const networkPrefixResultOctets = document.querySelectorAll('[data-group=network-prefix-result]');
 
-const networkPrefixDecimalOctets = document.querySelectorAll(
-  '[data-group=network-prefix-decimal]'
-);
-const networkPrefixBinaryOctets = document.querySelectorAll(
-  '[data-group=network-prefix-binary]'
-);
+// prettier-ignore
+const networkPrefixDecimalOctets = document.querySelectorAll('[data-group=network-prefix-decimal]');
+// prettier-ignore
+const networkPrefixBinaryOctets = document.querySelectorAll('[data-group=network-prefix-binary]');
+
+// prettier-ignore
+const complementExampleMask = document.querySelectorAll('[data-group=complement-example-mask]');
+// prettier-ignore
+const complementExampleComplement = document.querySelectorAll('[data-group=complement-example-complement]');
+
+const hostIdentifierIpOctets = document.querySelectorAll('[data-group=host-identifier-ip]');
+// prettier-ignore
+const hostIdentifierComplementOctets = document.querySelectorAll('[data-group=host-identifier-complement]');
+// prettier-ignore
+const hostIdentifierResultOctets = document.querySelectorAll('[data-group=host-identifier-result]');
+
+// prettier-ignore
+const hostIdentifierDecimalOctets = document.querySelectorAll('[data-group=host-identifier-decimal]');
+// prettier-ignore
+const hostIdentifierBinaryOctets = document.querySelectorAll('[data-group=host-identifier-binary]');
 
 // INITIALISATION
 setIp(ipAddress);
 setMask(mask);
 setNetworkPrefix(ipAddress, mask);
+setHostIdentifier(ipAddress, mask);
 
 // EVENT LISTENERS
 maskLengthInput.addEventListener('change', bitmaskLengthChange);
@@ -41,6 +55,7 @@ function bitmaskLengthChange({ target }) {
   const clampedValue = Math.max(0, Math.min(32, target.value));
   setMask(clampedValue);
   setNetworkPrefix(ipAddress, clampedValue);
+  setHostIdentifier(ipAddress, mask);
 }
 
 function ipAddressChange({ target }) {
@@ -48,6 +63,7 @@ function ipAddressChange({ target }) {
   if (isValidIp(newIp)) {
     setIp(newIp);
     setNetworkPrefix(newIp, mask);
+    setHostIdentifier(ipAddress, mask);
     ipAddressValidator.classList.add('hidden');
   } else {
     ipAddressValidator.classList.remove('hidden');
@@ -61,6 +77,13 @@ function ipToOctets(ip) {
 
 function maskToOctets(length) {
   return '1'.repeat(length).padEnd(32, '0').match(/.{8}/g);
+}
+
+function invertBits(octet) {
+  return octet
+    .split('')
+    .map(bit => (bit === '0' ? '1' : '0'))
+    .join('');
 }
 
 function isValidIp(ip) {
@@ -84,6 +107,7 @@ function setIp(newIp) {
     ipDecimalOctets[i].innerHTML = octet;
     ipBinaryOctets[i].innerHTML = toBinary(octet);
     networkPrefixIpOctets[i].innerHTML = toBinary(octet);
+    hostIdentifierIpOctets[i].innerHTML = toBinary(octet);
   });
 }
 
@@ -95,6 +119,9 @@ function setMask(newMask) {
     maskDecimalOctets[i].innerHTML = fromBinary(octet);
     maskBinaryOctets[i].innerHTML = octet;
     networkPrefixMaskOctets[i].innerHTML = octet;
+    complementExampleMask[i].innerHTML = octet;
+    complementExampleComplement[i].innerHTML = invertBits(octet);
+    hostIdentifierComplementOctets[i].innerHTML = invertBits(octet);
   });
 }
 
@@ -113,5 +140,26 @@ function setNetworkPrefix(newIp, newMask) {
     networkPrefixResultOctets[i].innerHTML = octet;
     networkPrefixBinaryOctets[i].innerHTML = octet;
     networkPrefixDecimalOctets[i].innerHTML = fromBinary(octet);
+  });
+}
+
+function setHostIdentifier(newIp, newMask) {
+  const complement = maskToOctets(newMask)
+    .join('')
+    .split('')
+    .map(bit => (bit === '0' ? 1 : 0));
+  const ipBits = ipToOctets(newIp)
+    .map(o => toBinary(o))
+    .join('')
+    .split('')
+    .map(Number);
+  const result = ipBits
+    .map((iBit, i) => iBit & complement[i])
+    .join('')
+    .match(/.{8}/g);
+  result.forEach((octet, i) => {
+    hostIdentifierResultOctets[i].innerHTML = octet;
+    hostIdentifierBinaryOctets[i].innerHTML = octet;
+    hostIdentifierDecimalOctets[i].innerHTML = fromBinary(octet);
   });
 }
