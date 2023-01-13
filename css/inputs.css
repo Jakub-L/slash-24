@@ -47,6 +47,7 @@ input:not([type='range']) {
   width: calc(100% - 0.5rem);
   background-color: var(--field-background);
   font-family: 'IBM Plex Mono', monospace;
+  font-weight: bold;
   color: var(--emphasis);
   text-align: center;
   font-size: 1rem;
