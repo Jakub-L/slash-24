@@ -205,7 +205,8 @@ button:hover {
 }
 
 /* MEDIA QUERIES */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px),
+print {
   .bits {
     font-size: 1rem;
   }
@@ -223,5 +224,24 @@ button:hover {
 
   .octets-3 {
     grid-template-rows: 1fr 1fr 1fr;
+  }
+}
+
+@media print {
+
+  .dark,
+  .light {
+    --emphasis: hsl(0, 0%, 0%);
+    --background: hsl(0, 0%, 100%);
+    --field-background: hsl(0, 0%, 100%);
+    --text: hsl(0, 0%, 0%);
+  }
+
+  button {
+    display: none;
+  }
+
+  section {
+    page-break-inside: avoid;
   }
 }
