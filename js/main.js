@@ -1,10 +1,10 @@
 // GLOBALS
 let mask = 24;
-let ipAddress = '172.16.254.149';
+let ip = '172.16.254.149';
 
 // ELEMENTS
-const ipAddressInput = document.getElementById('ip_input__field');
-const ipAddressValidator = document.getElementById('ip_input__validator');
+const ipInput = document.getElementById('ip_input__field');
+const ipValidator = document.getElementById('ip_input__validator');
 const ipDecimalOctets = document.querySelectorAll('[data-group=ip-decimal]');
 const ipBinaryOctets = document.querySelectorAll('[data-group=ip-binary]');
 
@@ -15,58 +15,66 @@ const maskBinaryOctets = document.querySelectorAll('[data-group=mask-binary]');
 
 const networkPrefixIpOctets = document.querySelectorAll('[data-group=network-prefix-ip]');
 const networkPrefixMaskOctets = document.querySelectorAll('[data-group=network-prefix-mask]');
-// prettier-ignore
 const networkPrefixResultOctets = document.querySelectorAll('[data-group=network-prefix-result]');
 
-// prettier-ignore
 const networkPrefixDecimalOctets = document.querySelectorAll('[data-group=network-prefix-decimal]');
-// prettier-ignore
 const networkPrefixBinaryOctets = document.querySelectorAll('[data-group=network-prefix-binary]');
 
-// prettier-ignore
 const complementExampleMask = document.querySelectorAll('[data-group=complement-example-mask]');
-// prettier-ignore
 const complementExampleComplement = document.querySelectorAll('[data-group=complement-example-complement]');
 
 const hostIdentifierIpOctets = document.querySelectorAll('[data-group=host-identifier-ip]');
-// prettier-ignore
 const hostIdentifierComplementOctets = document.querySelectorAll('[data-group=host-identifier-complement]');
-// prettier-ignore
 const hostIdentifierResultOctets = document.querySelectorAll('[data-group=host-identifier-result]');
 
-// prettier-ignore
 const hostIdentifierDecimalOctets = document.querySelectorAll('[data-group=host-identifier-decimal]');
-// prettier-ignore
 const hostIdentifierBinaryOctets = document.querySelectorAll('[data-group=host-identifier-binary]');
 
+const modeToggle = document.getElementById("mode-toggle");
+
 // INITIALISATION
-setIp(ipAddress);
+setIp(ip);
 setMask(mask);
-setNetworkPrefix(ipAddress, mask);
-setHostIdentifier(ipAddress, mask);
+setNetworkPrefix(ip, mask);
+setHostIdentifier(ip, mask);
 
 // EVENT LISTENERS
 maskLengthInput.addEventListener('change', bitmaskLengthChange);
 maskLengthSlider.addEventListener('change', bitmaskLengthChange);
-ipAddressInput.addEventListener('change', ipAddressChange);
+modeToggle.addEventListener('click', changeMode);
+ipInput.addEventListener('change', ipChange);
 
 // EVENT HANDLERS
 function bitmaskLengthChange({ target }) {
   const clampedValue = Math.max(0, Math.min(32, target.value));
   setMask(clampedValue);
-  setNetworkPrefix(ipAddress, clampedValue);
-  setHostIdentifier(ipAddress, mask);
+  setNetworkPrefix(ip, clampedValue);
+  setHostIdentifier(ip, mask);
 }
 
-function ipAddressChange({ target }) {
+function ipChange({ target }) {
   const newIp = target.value;
   if (isValidIp(newIp)) {
     setIp(newIp);
     setNetworkPrefix(newIp, mask);
-    setHostIdentifier(ipAddress, mask);
-    ipAddressValidator.classList.add('hidden');
+    setHostIdentifier(ip, mask);
+    ipValidator.classList.add('hidden');
   } else {
-    ipAddressValidator.classList.remove('hidden');
+    ipValidator.classList.remove('hidden');
+  }
+}
+
+function changeMode() {
+  if (modeToggle.ariaChecked === "false") {
+    modeToggle.ariaChecked = "true"
+    modeToggle.innerText = "dark mode"
+    document.documentElement.classList.remove('dark')
+    document.documentElement.classList.add('light')
+  } else {
+    modeToggle.ariaChecked = "false"
+    modeToggle.innerText = "light mode"
+    document.documentElement.classList.remove('light')
+    document.documentElement.classList.add('dark')
   }
 }
 
@@ -101,8 +109,8 @@ function fromBinary(octet) {
 
 // SETTERS
 function setIp(newIp) {
-  ipAddress = newIp;
-  ipAddressInput.value = newIp;
+  ip = newIp;
+  ipInput.value = newIp;
   ipToOctets(newIp).forEach((octet, i) => {
     ipDecimalOctets[i].innerHTML = octet;
     ipBinaryOctets[i].innerHTML = toBinary(octet);

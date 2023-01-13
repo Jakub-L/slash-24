@@ -1,93 +1,81 @@
 /* FONT IMPORTS */
-@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&display=swap');
-
-/* GLOBAL VARIABLES */
-:root {
-  --red-light: hsl(356, 90%, 65%);
-  --red-medium: hsl(356, 83%, 45%);
-  --red-dark: hsl(356, 83%, 20%);
-  --blue-light: hsl(200, 100%, 65%);
-  --blue-medium: hsl(200, 100%, 8%);
-  --blue-dark: hsl(200, 100%, 3%);
-  --tan-light: hsl(40, 91%, 91%);
-  --tan-medium: hsl(40, 91%, 65%);
-  --tan-dark: hsl(40, 91%, 20%);
-  --grey: hsl(40, 5%, 40%);
-
+@font-face {
+  font-family: 'Fjalla One';
+  src: url('../assets/fonts/fjallaone.ttf');
 }
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  src: url('../assets/fonts/raleway.ttf');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: italic;
+  src: url('../assets/fonts/raleway-italic.ttf');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../assets/fonts/ibmplexmono.ttf');
+}
+
 
 /* TAG STYLES */
 html {
-  /* Positioning */
-
-  /* Display and Box Model */
   margin: 0;
   padding: 1rem;
-
-  /* Colour */
   background-color: var(--background);
   color: var(--text);
-
-  /* Text */
   font-family: 'Raleway', sans-serif;
   font-size: 1.05rem;
   line-height: 1.6;
-
-  /* Other */
 }
 
 body {
-  /* Display and Box Model */
   margin: auto;
   max-width: 768px;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
-  /* Display and Box Model */
   margin: 0.75rem 0;
-
-  /* Text */
   text-align: center;
   font-family: 'Fjalla One';
 }
 
 h2 {
-  /* Display and Box Model */
   margin: 1.5rem 0 0 0;
-
-  /* Text */
   font-family: 'Fjalla One';
 }
 
 p {
-  /* Display and Box Model */
   margin: 0;
 }
 
 p+p {
-  /* Display and Box Model */
   margin-top: 1rem;
 }
 
 footer {
-  /* Display and Box Model */
   width: 100%;
   margin-top: 1.5rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   border-top: 1px solid var(--emphasis);
-
-  /* Text */
   text-align: center;
   font-size: 0.75rem;
 }
 
 a,
 a:visited {
-  /* Colour */
-  color: var(--emphasis)
+  color: var(--emphasis);
+}
+
+a:hover {
+  color: var(--text);
 }
 
 table {
@@ -111,7 +99,15 @@ td {
 .dark {
   --emphasis: hsl(356, 83%, 45%);
   --background: hsl(200, 100%, 3%);
+  --field-background: hsl(200, 100%, 3%);
   --text: hsl(40, 91%, 91%);
+}
+
+.light {
+  --emphasis: hsl(356, 83%, 40%);
+  --background: hsl(40, 91%, 95%);
+  --field-background: hsl(40, 91%, 99%);
+  --text: hsl(200, 100%, 3%);
 }
 
 .hidden {
@@ -124,42 +120,35 @@ td {
 
 .emphasis {
   color: var(--emphasis);
+  text-decoration: underline;
 }
 
 .bits {
-  /* Display and Box Model */
   padding: 0.25rem 0.5rem;
-
-  /* Text */
+  background: var(--field-background);
   text-align: center;
   font-size: 0.8rem;
-
-  /* Other */
   border: 1px var(--emphasis) solid;
   border-radius: 0.25rem;
 }
 
 .octet-container {
-  /* Display and Box Model */
   margin: 0.5rem 0 1.5rem 0;
   display: grid;
   gap: 0.5rem;
   grid-auto-flow: column;
   align-items: flex-end;
-
-  /* Text */
   font-family: 'IBM Plex Mono', monospace;
   text-align: center;
+  grid-template-rows: repeat(5, auto);
 }
 
 .octets-2 {
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(5, auto);
 }
 
 .octets-3 {
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: repeat(5, auto);
 }
 
 /* MEDIA QUERIES */
@@ -169,20 +158,17 @@ td {
   }
 
   .octet-container {
-    /* Display and Box Model */
     grid-auto-flow: row;
     align-items: center;
-
     text-align: left;
+    grid-template-columns: auto repeat(4, 1fr);
   }
 
   .octets-2 {
-    grid-template-columns: auto repeat(4, 1fr);
     grid-template-rows: 1fr 1fr;
   }
 
   .octets-3 {
-    grid-template-columns: auto repeat(4, 1fr);
     grid-template-rows: 1fr 1fr 1fr;
   }
 }
