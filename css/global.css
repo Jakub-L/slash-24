@@ -21,7 +21,6 @@
   src: url('../assets/fonts/ibmplexmono.ttf');
 }
 
-
 /* TAG STYLES */
 html {
   margin: 0;
@@ -55,7 +54,7 @@ p {
   margin: 0;
 }
 
-p+p {
+p + p {
   margin-top: 1rem;
 }
 
@@ -95,6 +94,27 @@ td {
   font-size: 0.9rem;
 }
 
+button {
+  width: 9rem;
+  padding: 0.3rem 1rem;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  border: 1px solid var(--emphasis);
+  border-radius: 0.25rem;
+  filter: drop-shadow(2px 2px 0 var(--emphasis));
+  cursor: pointer;
+}
+
+button:active {
+  transform: translate(2px, 2px);
+  filter: none;
+}
+
+button:hover {
+  border-color: var(--text);
+  text-decoration: underline;
+}
+
 /* CLASS STYLES */
 .dark {
   --emphasis: hsl(356, 83%, 45%);
@@ -103,11 +123,21 @@ td {
   --text: hsl(40, 91%, 91%);
 }
 
+.dark button {
+  background-color: var(--field-background);
+  color: var(--text);
+}
+
 .light {
   --emphasis: hsl(356, 83%, 40%);
   --background: hsl(40, 91%, 95%);
   --field-background: hsl(40, 91%, 99%);
   --text: hsl(200, 100%, 3%);
+}
+
+.light button {
+  background-color: var(--emphasis);
+  color: var(--field-background);
 }
 
 .hidden {
@@ -149,6 +179,23 @@ td {
 
 .octets-3 {
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.explanation-hidden p,
+.explanation-hidden table {
+  display: none;
+}
+
+.explanation-hidden h2 {
+  margin-top: 0;
+}
+
+/* ID STYLES */
+#buttons-container {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
 }
 
 /* MEDIA QUERIES */

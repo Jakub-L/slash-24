@@ -31,6 +31,7 @@ const hostIdentifierDecimalOctets = document.querySelectorAll('[data-group=host-
 const hostIdentifierBinaryOctets = document.querySelectorAll('[data-group=host-identifier-binary]');
 
 const modeToggle = document.getElementById("mode-toggle");
+const explanationToggle = document.getElementById("explanation-toggle");
 
 // INITIALISATION
 setIp(ip);
@@ -41,8 +42,9 @@ setHostIdentifier(ip, mask);
 // EVENT LISTENERS
 maskLengthInput.addEventListener('change', bitmaskLengthChange);
 maskLengthSlider.addEventListener('change', bitmaskLengthChange);
-modeToggle.addEventListener('click', changeMode);
 ipInput.addEventListener('change', ipChange);
+modeToggle.addEventListener('click', modeChange);
+explanationToggle.addEventListener('click', explanationDisplayChange);
 
 // EVENT HANDLERS
 function bitmaskLengthChange({ target }) {
@@ -64,17 +66,27 @@ function ipChange({ target }) {
   }
 }
 
-function changeMode() {
+function modeChange() {
   if (modeToggle.ariaChecked === "false") {
     modeToggle.ariaChecked = "true"
-    modeToggle.innerText = "dark mode"
+    modeToggle.innerText = "Dark Mode"
     document.documentElement.classList.remove('dark')
     document.documentElement.classList.add('light')
   } else {
     modeToggle.ariaChecked = "false"
-    modeToggle.innerText = "light mode"
+    modeToggle.innerText = "Light Mode"
     document.documentElement.classList.remove('light')
     document.documentElement.classList.add('dark')
+  }
+}
+
+function explanationDisplayChange() {
+  if (document.documentElement.classList.contains('explanation-hidden')) {
+    document.documentElement.classList.remove('explanation-hidden')
+    explanationToggle.innerText = 'Hide Explanations'
+  } else {
+    document.documentElement.classList.add('explanation-hidden')
+    explanationToggle.innerText = 'Show Explanations'
   }
 }
 

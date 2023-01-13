@@ -42,40 +42,6 @@ div[id$='_input__container'] {
   grid-area: input;
 }
 
-/* MODE TOGGLE */
-#mode-toggle {
-  min-width: 9rem;
-  padding: 0.3rem 1rem;
-  margin-bottom: 0.5rem;
-  align-self: flex-end;
-  text-transform: uppercase;
-  font-size: 0.6rem;
-  border: 1px solid var(--emphasis);
-  border-radius: 0.25rem;
-  filter: drop-shadow(2px 2px 0 var(--emphasis));
-  cursor: pointer;
-}
-
-#mode-toggle:active {
-  transform: translate(2px, 2px);
-  filter: none;
-}
-
-#mode-toggle:hover {
-  border-color: var(--text);
-  text-decoration: underline;
-}
-
-html.dark #mode-toggle {
-  background-color: var(--field-background);
-  color: var(--text);
-}
-
-html.light #mode-toggle {
-  background-color: var(--emphasis);
-  color: var(--field-background);
-}
-
 /* TAG STYLES */
 input:not([type='range']) {
   width: calc(100% - 0.5rem);
