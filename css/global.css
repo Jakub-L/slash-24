@@ -122,7 +122,7 @@ button:hover {
 
 /* CLASS STYLES */
 .dark {
-  --emphasis: hsl(356, 83%, 45%);
+  --emphasis: hsl(356, 83%, 52%);
   --background: hsl(200, 100%, 3%);
   --field-background: hsl(200, 100%, 3%);
   --text: hsl(40, 91%, 91%);
