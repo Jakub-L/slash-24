@@ -1,0 +1,108 @@
+/* INPUT CONTAINERS */
+div[id$='_input__container'] {
+  margin: 0.5rem 0;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+
+/* IP ADDRESS INPUT */
+#ip_input__container {
+  grid-template-areas: 'label input' 'validator validator';
+}
+
+#ip_input__label {
+  grid-area: label;
+}
+
+#ip_input__validator {
+  grid-area: validator;
+  text-align: center;
+}
+
+#ip_input__field {
+  grid-area: input;
+}
+
+/* MASK LENGTH INPUT */
+#mask_input__container {
+  grid-template-areas: 'label input';
+}
+
+#mask_input__label {
+  grid-area: label;
+}
+
+#mask_input__slider {
+  display: none;
+}
+
+#mask_input__field {
+  grid-area: input;
+}
+
+/* TAG STYLES */
+input:not([type='range']) {
+  width: calc(100% - 0.5rem);
+  background-color: var(--field-background);
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: bold;
+  color: var(--emphasis);
+  text-align: center;
+  font-size: 1rem;
+  border: 1px var(--emphasis) solid;
+  border-radius: 0.25rem;
+}
+
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 0.5rem;
+  background: var(--field-background);
+  border-radius: 0.5rem;
+  border: 1px var(--emphasis) solid;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  background: var(--emphasis);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: 1px var(--emphasis) solid;
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  background: var(--emphasis);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: 1px var(--emphasis) solid;
+}
+
+label {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 768px) {
+  #mask_input__container {
+    grid-template-areas: 'label input slider';
+    grid-template-columns: auto 10em 2fr;
+  }
+
+  #mask_input__slider {
+    grid-area: slider;
+    display: initial;
+    width: calc(100% - 0.5rem);
+  }
+
+  input:not([type='range']) {
+    font-size: 1.2rem;
+  }
+}

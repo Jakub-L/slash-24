@@ -1,121 +1,235 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
   <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subnet Mask</title>
-    <style>
-      * {
-        font-family: monospace;
-        font-size: 16px;
-        margin: 0;
-      }
 
-      .container {
-        margin: 0 0 2em 2em;
-      }
-    </style>
+    <title>/24 • Subnet Masking Tool</title>
+    <meta name="description" content="Tool for calculating and visualising subnet masking">
+    <meta name="theme-color" content="#001a27" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#fdf0d5" media="(prefers-color-scheme: light)">
 
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/inputs.css">
+
+    <link rel="icon" href="./favicon.ico" sizes="any">
+    <link rel="icon" href="./assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./assets/icons/favicon-180.png">
+    <link rel="manifest" href="./manifest.json">
+
+    <meta property="og:url" content="https://jakub-l.github.io/slash-24/">
+    <meta property="og:title" content="/24 • Subnet Masking Tool">
+    <meta property="og:description" content="Tool for calculating and visualising subnet masking">
+    <meta property="og:image" content="assets/icons/social-card.png">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="/24 • Subnet Masking Tool">
+    <meta name="twitter:description" content="Tool for calculating and visualising subnet masking">
+    <meta name="twitter:image" content="https://jakub-l.github.io/slash-24/assets/icons/social-card.png">
+    <meta name="twitter:image:src" content="https://jakub-l.github.io/slash-24/assets/icons/social-card.png">
+    <meta name="twitter:dnt" content="on">
+
+    <script src="./js/main.js" defer></script>
   </head>
 
   <body>
-    <h2>Subnet mask:</h2>
-    <div class="container">
-      <input id="mask" type="range" min="0" max="32"></input>
-      <label for="mask">Subnet mask</label>
-      <div id="binary-mask"></div>
-      <div id="hex-mask"></div>
-      <div id="decimal-mask"></div>
+    <h1>/24 • Subnet Masking Tool</h1>
+    <div id="buttons-container">
+      <button id="mode-toggle" role="switch" aria-checked="false">Light Mode</button>
+      <button id="explanation-toggle" role="switch" aria-checked="false">Hide Explanations</button>
     </div>
-    <h2>IP address:</h2>
-    <div class="container">
-      <input id="ip"></input>
-      <label for="ip">IP Address</label>
-      <div id="binary-ip"></div>
-      <div id="hex-ip"></div>
-      <div id="decimal-ip"></div>
-    </div>
-    <h2>AND-ed result:</h2>
-    <div class="container">
-      <div id="binary-result"></div>
-      <div id="hex-result"></div>
-      <div id="decimal-result"></div>
-    </div>
+    <section>
+      <p>We created this web tool to explain subnetting and network masks in a way accessible to novices and learners.
+        Apart from explaining each of the elements that goes into a calculating a subnet, the whole process is
+        interactive. Fields with <span class="emphasis">emphasised</span> text can be edited to affect the results
+        throughout the page.</p>
+    </section>
+
+    <section>
+      <h2>IP address</h2>
+      <p>An IP (Internet Protocol) address is similar to a real-world address. It allows other computers on a network
+        to locate a device and direct traffic to it. IPv4 (IP version 4) uses a 32-bit number to represent the address.
+        For human readibility it usually is split into four 8-bit integers called <i>octets</i>. As you will see, when
+        it comes to subnet masking, it can be helpful to think of an IP address in binary terms.</p>
+      <div id="ip_input__container">
+        <label id="ip_input__label" for="ip_input__field">IP address:</label>
+        <input id="ip_input__field" type="text">
+        <span id="ip_input__validator" class="emphasis hidden">Please input a valid IP address</span>
+      </div>
+      <div class="octet-container octets-2">
+        <span>IP octets in decimal:</span>
+        <span class="bits" data-group="ip-decimal"></span>
+        <span class="bits" data-group="ip-decimal"></span>
+        <span class="bits" data-group="ip-decimal"></span>
+        <span class="bits" data-group="ip-decimal"></span>
+        <span>IP octets in binary:</span>
+        <span class="bits" data-group="ip-binary"></span>
+        <span class="bits" data-group="ip-binary"></span>
+        <span class="bits" data-group="ip-binary"></span>
+        <span class="bits" data-group="ip-binary"></span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Network mask</h2>
+      <p>Sometimes it is useful to divide a network into further parts, called <i>subnets</i>. In order to enable data
+        to be routed to different subnets, a mask is used. It splits the original IP address into two sections:
+        one identifying the subnet and the other identifying the device within the subnet. </p>
+      <p>The mask is a 32-bit number, same as an IP address. It is composed of a consecutive number of 1s, followed by
+        however many 0s it takes to make the total length 32. We usually write the mask as number between 0 and 32
+        (indicating how many 1s the mask begins with) and separated from the IP address by a slash. For example, the
+        name of this site - /24 - indicates a mask of 24 ones and 8 zeroes. </p>
+      <p>Since subnet masks are 32 bits long, they can be represented using octets, just like and IP address.</p>
+      <div id="mask_input__container">
+        <label id="mask_input__label">Mask bit-length:</label>
+        <input id="mask_input__field" type="number" min="0" max="32" aria-labelledby="mask_input__label">
+        <input id="mask_input__slider" type="range" min="0" max="32" aria-labelledby="mask_input__label">
+      </div>
+      <div class="octet-container octets-2">
+        <span>Mask octets in decimal:</span>
+        <span class="bits" data-group="mask-decimal"></span>
+        <span class="bits" data-group="mask-decimal"></span>
+        <span class="bits" data-group="mask-decimal"></span>
+        <span class="bits" data-group="mask-decimal"></span>
+        <span>Mask octets in binary:</span>
+        <span class="bits" data-group="mask-binary"></span>
+        <span class="bits" data-group="mask-binary"></span>
+        <span class="bits" data-group="mask-binary"></span>
+        <span class="bits" data-group="mask-binary"></span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Network prefix</h2>
+      <p>
+        The network prefix (also called the <i>routing prefix</i> or the <i>network number</i>) allows the
+        identification of the specific subnet, allowing the correct routing of internet traffic. To find the network
+        prefix, a bitwise AND operation is applied to the subnet mask and the IP address.
+      </p>
+      <p>An AND operation (usually represented by the <span class="mono">&</span> character) takes two bits and returns
+        a <span class="mono">1</span> if both inputs are <span class="mono">1</span>; otherwise it returns a <span
+          class="mono">0</span>.</p>
+      <table>
+        <tr>
+          <th>A</th>
+          <th>B</th>
+          <th>A & B</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>1</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </table>
+      <p><i>Bitwise</i> simply indicates
+        that this operation is performed bit-by-bit on both inputs. By using the IP address and mask above we get the
+        following:</p>
+      <div class="octet-container octets-3">
+        <span>IP bits:</span>
+        <span class="bits" data-group="network-prefix-ip"></span>
+        <span class="bits" data-group="network-prefix-ip"></span>
+        <span class="bits" data-group="network-prefix-ip"></span>
+        <span class="bits" data-group="network-prefix-ip"></span>
+        <span>Mask bits:</span>
+        <span class="bits" data-group="network-prefix-mask"></span>
+        <span class="bits" data-group="network-prefix-mask"></span>
+        <span class="bits" data-group="network-prefix-mask"></span>
+        <span class="bits" data-group="network-prefix-mask"></span>
+        <span>Network prefix bits:</span>
+        <span class="bits" data-group="network-prefix-result"></span>
+        <span class="bits" data-group="network-prefix-result"></span>
+        <span class="bits" data-group="network-prefix-result"></span>
+        <span class="bits" data-group="network-prefix-result"></span>
+      </div>
+      <p>Similarly to how a decimal IP address can be displayed in binary, we can convert the network prefix from binary
+        back to decimal:</p>
+      <div class="octet-container octets-2">
+        <span>Network prefix in decimal:</span>
+        <span class="bits" data-group="network-prefix-decimal"></span>
+        <span class="bits" data-group="network-prefix-decimal"></span>
+        <span class="bits" data-group="network-prefix-decimal"></span>
+        <span class="bits" data-group="network-prefix-decimal"></span>
+        <span>Network prefix in binary:</span>
+        <span class="bits" data-group="network-prefix-binary"></span>
+        <span class="bits" data-group="network-prefix-binary"></span>
+        <span class="bits" data-group="network-prefix-binary"></span>
+        <span class="bits" data-group="network-prefix-binary"></span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Host identifier</h2>
+      <p>The host identifier, sometimes also called a <i>rest field</i> identifies the specific device within the
+        network. Similarly to the network prefix, it is obtained by performing a bitwise AND operation using the IP
+        address. However, instead of using the network mask, it uses the <i>complement</i> of the mask. A complement
+        simply inverts the bits - where the original bit is <span class="mono">1</span>, the complement will have a
+        <span class="mono">0</span>, and vice versa.
+      </p>
+      <div class="octet-container octets-2">
+        <span>Mask bits:</span>
+        <span class="bits" data-group="complement-example-mask"></span>
+        <span class="bits" data-group="complement-example-mask"></span>
+        <span class="bits" data-group="complement-example-mask"></span>
+        <span class="bits" data-group="complement-example-mask"></span>
+        <span>Mask complement bits:</span>
+        <span class="bits" data-group="complement-example-complement"></span>
+        <span class="bits" data-group="complement-example-complement"></span>
+        <span class="bits" data-group="complement-example-complement"></span>
+        <span class="bits" data-group="complement-example-complement"></span>
+      </div>
+      <p>The actual operation is exactly the same as for the network prefix:</p>
+      <div class="octet-container octets-3">
+        <span>IP bits:</span>
+        <span class="bits" data-group="host-identifier-ip"></span>
+        <span class="bits" data-group="host-identifier-ip"></span>
+        <span class="bits" data-group="host-identifier-ip"></span>
+        <span class="bits" data-group="host-identifier-ip"></span>
+        <span>Complement bits:</span>
+        <span class="bits" data-group="host-identifier-complement"></span>
+        <span class="bits" data-group="host-identifier-complement"></span>
+        <span class="bits" data-group="host-identifier-complement"></span>
+        <span class="bits" data-group="host-identifier-complement"></span>
+        <span>Host identifier bits:</span>
+        <span class="bits" data-group="host-identifier-result"></span>
+        <span class="bits" data-group="host-identifier-result"></span>
+        <span class="bits" data-group="host-identifier-result"></span>
+        <span class="bits" data-group="host-identifier-result"></span>
+      </div>
+      <p>Again, like the IP address, network mask or network prefix, the host identifier can be written in a binary or
+        decimal form:</p>
+      <div class="octet-container octets-2">
+        <span>Host identifier in decimal:</span>
+        <span class="bits" data-group="host-identifier-decimal"></span>
+        <span class="bits" data-group="host-identifier-decimal"></span>
+        <span class="bits" data-group="host-identifier-decimal"></span>
+        <span class="bits" data-group="host-identifier-decimal"></span>
+        <span>Host identifier in binary:</span>
+        <span class="bits" data-group="host-identifier-binary"></span>
+        <span class="bits" data-group="host-identifier-binary"></span>
+        <span class="bits" data-group="host-identifier-binary"></span>
+        <span class="bits" data-group="host-identifier-binary"></span>
+      </div>
+    </section>
+
+    <footer>Created by <a href="https://github.com/Jakub-L">JL</a> and AG</footer>
   </body>
-  <script>
-    // ELEMENTS
-    const maskInput = document.getElementById("mask");
-    const binaryMask = document.getElementById('binary-mask')
-    const hexMask = document.getElementById('hex-mask')
-    const decimalMask = document.getElementById('decimal-mask')
-
-    const ipInput = document.getElementById("ip");
-    const binaryIp = document.getElementById('binary-ip')
-    const hexIp = document.getElementById('hex-ip')
-    const decimalIp = document.getElementById('decimal-ip')
-
-    const binaryResult = document.getElementById('binary-result')
-    const hexResult = document.getElementById('hex-result')
-    const decimalResult = document.getElementById('decimal-result')
-
-    // EVENT LISTENERS
-    maskInput.addEventListener("change", ({ target }) => changeMaskHandler(target.value))
-    ipInput.addEventListener("change", ({ target }) => changeIPHandler(target.value))
-
-    // INITIALISE
-    maskInput.value = 0
-    ipInput.value = "0.0.0.0"
-    changeMaskHandler(0)
-    changeIPHandler("0.0.0.0")
-
-    // HANDLERS
-    function changeMaskHandler(value) {
-      const binaryValue = "1".repeat(value).padEnd(32, "0").match(/.{1,8}/g)
-      const hexValue = binaryValue.map(num => parseInt(num, 2).toString(16).padStart(2, "0").toUpperCase())
-      const decimalValue = binaryValue.map(num => parseInt(num, 2).toString(10))
-
-      binaryMask.innerHTML = binaryValue.join(".")
-      hexMask.innerHTML = hexValue.join(".")
-      decimalMask.innerHTML = decimalValue.join(".")
-      calculateResult()
-    }
-
-    function changeIPHandler(value) {
-      const decimalValue = value.split(".").map(num => parseInt(num, 10))
-      const isValidIP = decimalValue.every(num => num >= 0 && num <= 255)
-
-      if (isValidIP) {
-        const binaryValue = decimalValue.map(num => num.toString(2).padStart(8, "0"))
-        const hexValue = decimalValue.map(num => num.toString(16).padStart(2, "0").toUpperCase())
-
-        binaryIp.innerHTML = binaryValue.join(".")
-        hexIp.innerHTML = hexValue.join(".")
-        decimalIp.innerHTML = decimalValue.join(".")
-        calculateResult()
-      }
-    }
-
-    function calculateResult() {
-      const processString = (string) => string.split(".").map(num => num.padStart(8, "0")).join("")
-      const maskRaw = binaryMask.innerHTML
-      const ipRaw = binaryIp.innerHTML
-      if (maskRaw && ipRaw) {
-        const mask = processString(maskRaw)
-        const ip = processString(ipRaw)
-        const binaryValue = ((parseInt(mask, 2) & parseInt(ip, 2)) >>> 0)
-          .toString(2)
-          .padStart(32, "0")
-          .match(/.{1,8}/g)
-        const hexValue = binaryValue.map(num => parseInt(num, 2).toString(16).padStart(2, "0").toUpperCase())
-        const decimalValue = binaryValue.map(num => parseInt(num, 2).toString(10))
-
-        binaryResult.innerHTML = binaryValue.join(".")
-        hexResult.innerHTML = hexValue.join(".")
-        decimalResult.innerHTML = decimalValue.join(".")
-      }
-    }
-  </script>
 
 </html>

@@ -1,0 +1,247 @@
+/* FONT IMPORTS */
+@font-face {
+  font-family: 'Fjalla One';
+  src: url('../assets/fonts/fjallaone.ttf');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('../assets/fonts/raleway.ttf');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: italic;
+  src: url('../assets/fonts/raleway-italic.ttf');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../assets/fonts/ibmplexmono.ttf');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-weight: bold;
+  src: url('../assets/fonts/ibmplexmono-bold.ttf');
+}
+
+/* TAG STYLES */
+html {
+  margin: 0;
+  padding: 1rem;
+  background-color: var(--background);
+  color: var(--text);
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+body {
+  margin: auto;
+  max-width: 768px;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin: 0.75rem 0;
+  text-align: center;
+  font-family: 'Fjalla One';
+}
+
+h2 {
+  margin: 1.5rem 0 0 0;
+  font-family: 'Fjalla One';
+}
+
+p {
+  margin: 0;
+}
+
+p+p {
+  margin-top: 1rem;
+}
+
+footer {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-top: 1px solid var(--emphasis);
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+a,
+a:visited {
+  color: var(--emphasis);
+}
+
+a:hover {
+  color: var(--text);
+}
+
+table {
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 0 0.75rem;
+  color: var(--emphasis);
+  border-bottom: 1px solid var(--emphasis);
+}
+
+td {
+  font-size: 0.9rem;
+}
+
+button {
+  width: 9rem;
+  padding: 0.3rem 1rem;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  border: 1px solid var(--emphasis);
+  border-radius: 0.25rem;
+  filter: drop-shadow(2px 2px 0 var(--emphasis));
+  cursor: pointer;
+}
+
+button:active {
+  transform: translate(2px, 2px);
+  filter: none;
+}
+
+button:hover {
+  border-color: var(--text);
+  text-decoration: underline;
+}
+
+/* CLASS STYLES */
+.dark {
+  --emphasis: hsl(356, 83%, 52%);
+  --background: hsl(200, 100%, 3%);
+  --field-background: hsl(200, 100%, 3%);
+  --text: hsl(40, 91%, 91%);
+}
+
+.dark button {
+  background-color: var(--field-background);
+  color: var(--text);
+}
+
+.light {
+  --emphasis: hsl(356, 83%, 40%);
+  --background: hsl(40, 91%, 95%);
+  --field-background: hsl(40, 91%, 99%);
+  --text: hsl(200, 100%, 3%);
+}
+
+.light button {
+  background-color: var(--emphasis);
+  color: var(--field-background);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.mono {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.emphasis {
+  color: var(--emphasis);
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: bold;
+}
+
+.bits {
+  padding: 0.25rem 0.5rem;
+  background: var(--field-background);
+  text-align: center;
+  font-size: 0.8rem;
+  border: 1px var(--emphasis) solid;
+  border-radius: 0.25rem;
+}
+
+.octet-container {
+  margin: 0.5rem 0 1.5rem 0;
+  display: grid;
+  gap: 0.5rem;
+  grid-auto-flow: column;
+  align-items: flex-end;
+  font-family: 'IBM Plex Mono', monospace;
+  text-align: center;
+  grid-template-rows: repeat(5, auto);
+}
+
+.octets-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.octets-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.explanation-hidden p,
+.explanation-hidden table {
+  display: none;
+}
+
+.explanation-hidden h2 {
+  margin-top: 0;
+}
+
+/* ID STYLES */
+#buttons-container {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 768px),
+print {
+  .bits {
+    font-size: 1rem;
+  }
+
+  .octet-container {
+    grid-auto-flow: row;
+    align-items: center;
+    text-align: left;
+    grid-template-columns: auto repeat(4, 1fr);
+  }
+
+  .octets-2 {
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .octets-3 {
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+}
+
+@media print {
+
+  .dark,
+  .light {
+    --emphasis: hsl(0, 0%, 0%);
+    --background: hsl(0, 0%, 100%);
+    --field-background: hsl(0, 0%, 100%);
+    --text: hsl(0, 0%, 0%);
+  }
+
+  button {
+    display: none;
+  }
+
+  section {
+    page-break-inside: avoid;
+  }
+}
